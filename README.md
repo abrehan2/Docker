@@ -1,19 +1,8 @@
-Apologies for that! Here’s the full response completely in MDX format:
-
-````mdx
 # Node-Docker
 
-A simple Node.js and Express application in a Docker container.
+A simple Node.js application in a Docker container.
 
-This README explains basic Docker commands for building, running, and managing the Docker container for this project.
-
-## Prerequisites
-
-- [Docker](https://docs.docker.com/get-docker/) should be installed on your machine.
-
----
-
-## Commands
+> Commands 👇
 
 ### 1. Build a Docker Image
 
@@ -22,7 +11,7 @@ To create a Docker image for this application:
 ```bash
 docker build -t dockify/back-end .
 ```
-````
+
 
 - `docker build`: This command builds an image from a Dockerfile.
 - `-t dockify/back-end`: The `-t` flag tags the image with a name (`dockify/back-end`) for easy reference.
