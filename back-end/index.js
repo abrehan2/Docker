@@ -1,33 +1,28 @@
-// Imports 
 import express from 'express';
-import { MongoClient } from 'mongodb';
-import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import routes from './src/routes/crmRoutes';
 
-// App Config
 const app = express();
 const PORT = 4000;
-dotenv.config({path: './.env'});
 
-const url = process.env.MONGO_URL ?? '';
-const client = new MongoClient(url);
+// mongoose connection
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://mongo:27017/crm');
 
-// Database Name
-const dbName = 'testDB';
- 
-async function main() {
-  await client.connect();
-  const db = client.db(dbName);
-  db.collection('documents');
-  console.log('Connected to the database 🚀');
-}
+// bodyparser setup
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// Middleware
-main().catch(console.error);
+routes(app);
 
-app.get('/', (req, res) => {
-    res.json("I love docker!");
-});
+// serving static files
+app.use(express.static('public'));
 
-app.listen(PORT, () => {
-    console.log('Your server is running on PORT:',PORT);
-});
+app.get('/', (req, res) =>
+    res.send(`Node and express server is running on port ${PORT}`)
+);
+
+app.listen(PORT, () =>
+    console.log(`your server is running on port ${PORT}`)
+);
