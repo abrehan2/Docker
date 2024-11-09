@@ -8,7 +8,7 @@ const PORT = 4000;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://dockify:dockify@cluster0.jiy4s.mongodb.net/');
+mongoose.connect('add your uri');
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
