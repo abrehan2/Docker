@@ -8,8 +8,7 @@ Docker Compose is a tool that allows you to manage multiple containers as a sing
 
 Below is an example `docker-compose.yml` configuration file for a simple setup with two services: an application (`app`) and a MongoDB database (`mongo`).
 
-```yaml
-version: '1'
+```yml
 services:
   app:
     container_name: app
@@ -50,3 +49,21 @@ The `mongo` service defines a MongoDB container with the following configuration
 - **`image: mongo`**: Uses the MongoDB image from Docker Hub.
 - **`volumes: ./data:/data/db`**: Mounts the host directory `./data` to `/data/db` inside the container, allowing data persistence for MongoDB.
 - **`ports: "27017:27017"`**: Exposes MongoDB on its default port (27017) on the host machine.
+
+To start the containers and apply the configurations, run the following command:
+
+```yml
+docker-compose up
+```
+
+If you want to run a specific service, use the following command:
+
+```yml
+docker-compose up -d mongo
+```
+
+To view logs for a specific container, run the following command, replacing container_id with the actual ID of your container:
+
+```yml
+docker logs <container_id>
+```
