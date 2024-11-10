@@ -25,7 +25,7 @@ async function main() {
 main().catch(console.error);
 
 app.get('/', (req, res) => {
-    res.json("I love docker!");
+    res.json("I love docker containers!");
 });
 
 app.listen(PORT, () => {
